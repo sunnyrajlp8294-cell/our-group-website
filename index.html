@@ -4,47 +4,495 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OUR GROUP</title>
-  <meta name="google-site-verification" content="T9kZjVlEG-dXIrFfpEXNfexI4Zslwt9Pj0OkVcd4SK8" />
-  <meta name="description" content="Welcome to OUR GROUP, our online community.">
+
+  <title>OUR GROUP | Connect, Learn & Grow</title>
+  <meta name="description" content="Welcome to OUR GROUP, a community to connect, share ideas, learn together and grow.">
+
+  <!-- IMPORTANT: Keep your existing Google verification meta tag here -->
+
+  <meta name="theme-color" content="#0b1630">
+
   <style>
-    body {
+    :root {
+      --bg: #081225;
+      --panel: #101f3b;
+      --blue: #4f8cff;
+      --cyan: #53d8ff;
+      --text: #f4f7ff;
+      --muted: #b6c4df;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101827;
-      color: white;
-      text-align: center;
+      padding: 0;
     }
-    header {
-      padding: 24px;
-      background: #18253b;
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
-    main { padding: 60px 20px; }
-    h1 { color: #55e6c1; font-size: 42px; }
-    p { color: #d5deed; line-height: 1.7; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
     a {
-      display: inline-block;
-      background: #55e6c1;
-      color: #101827;
-      padding: 13px 22px;
-      border-radius: 8px;
+      color: inherit;
       text-decoration: none;
-      font-weight: bold;
     }
-    footer { padding: 20px; color: #aab5c8; }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 18, 37, 0.94);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: white;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid #344767;
+      background: var(--panel);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 90px 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, #183e79 0%, transparent 60%),
+        linear-gradient(180deg, #0b1830, var(--bg));
+    }
+
+    .badge {
+      display: inline-block;
+      color: var(--cyan);
+      border: 1px solid #31558a;
+      background: rgba(43, 91, 160, .18);
+      border-radius: 30px;
+      padding: 6px 15px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+      letter-spacing: -2px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #72a8ff, #53e0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 32px;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(100deg, #3978ed, #287fda);
+      color: white;
+      padding: 13px 23px;
+      border-radius: 10px;
+      font-weight: bold;
+      border: 1px solid transparent;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(54, 125, 255, .25);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: #45618b;
+      margin-left: 10px;
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 5vw, 42px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p,
+    .about-copy,
+    .card p {
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .about-copy p {
+      margin-bottom: 16px;
+    }
+
+    .info-panel {
+      background: linear-gradient(145deg, #14294b, #0d1930);
+      border: 1px solid #28446c;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.16);
+    }
+
+    .info-panel h3 {
+      color: var(--cyan);
+      margin-bottom: 12px;
+      font-size: 23px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #253b5e;
+      border-radius: 17px;
+      padding: 27px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--blue);
+    }
+
+    .card .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 48px 25px;
+      border: 1px solid #2b4b7c;
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at top, #1b427a, transparent 75%),
+        var(--panel);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 12px auto 25px;
+      max-width: 600px;
+    }
+
+    footer {
+      border-top: 1px solid #233653;
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .reveal {
+      animation: appear .8s ease both;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        min-height: 68px;
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        padding-bottom: 8px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 10px 4px;
+      }
+
+      .hero {
+        min-height: 500px;
+        padding: 70px 0;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .about-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .button.secondary {
+        margin: 12px 0 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <h2>OUR GROUP</h2>
+    <nav class="container">
+      <a class="logo" href="#home">OUR <span>GROUP.</span></a>
+
+      <button class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
   <main>
-    <h1>Welcome to OUR GROUP!</h1>
-    <p>Ek saath seekhein, judein aur aage badhein.</p>
-    <a href="https://www.google.com">Explore Now</a>
+    <section class="hero" id="home">
+      <div class="container reveal">
+        <span class="badge">WELCOME TO OUR COMMUNITY</span>
+        <h1>Connect. Learn.<br><span class="gradient-text">Grow Together.</span></h1>
+        <p>
+          Welcome to OUR GROUP — a place to connect with people,
+          share ideas, explore new things and grow together.
+        </p>
+        <a class="button" href="#about">Explore Our Group ↗</a>
+        <a class="button secondary" href="#contact">Get In Touch</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <span class="badge">WHO WE ARE</span>
+          <h2>About <span class="gradient-text">OUR GROUP</span></h2>
+          <div class="about-copy">
+            <p>
+              OUR GROUP is a community built around connection,
+              collaboration and learning.
+            </p>
+            <p>
+              Our goal is to create a welcoming space where people
+              can exchange ideas, discover opportunities and support
+              one another.
+            </p>
+            <p>
+              This is our beginning. Let's build something great together!
+            </p>
+          </div>
+          <a class="button" href="#features">Discover More</a>
+        </div>
+
+        <div class="info-panel">
+          <h3>One Group. Shared Goals.</h3>
+          <p class="about-copy">
+            Stay curious, share what you know and encourage others.
+            Every great community starts with people who want to make
+            a positive difference.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-heading">
+          <span class="badge">WHAT WE OFFER</span>
+          <h2>Made for <span class="gradient-text">Everyone</span></h2>
+          <p>A simple space for community, ideas and growth.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🤝</div>
+            <h3>Community</h3>
+            <p>Connect with others and build meaningful connections.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💡</div>
+            <h3>Share Ideas</h3>
+            <p>Exchange knowledge, discuss ideas and learn together.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🚀</div>
+            <h3>Grow Together</h3>
+            <p>Discover new possibilities and support each other's goals.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <span class="badge">LET'S CONNECT</span>
+          <h2>Be Part of <span class="gradient-text">OUR GROUP</span></h2>
+          <p>
+            Have an idea or want to connect with us?
+            Add your preferred contact or social media link to this section.
+          </p>
+          <a class="button" href="#home">Back to Top ↑</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>© 2026 OUR GROUP</footer>
+  <footer>
+    <div class="container">
+      © <span id="year">2026</span> OUR GROUP. Built with care.
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
